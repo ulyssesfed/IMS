@@ -4,25 +4,49 @@ public class cameras extends stock{
     public String type = "camera";
     public String brand;
     public String model;
-    public int price;
+    public double price;
     public int quantity;
-    public int weight;
-    public int resolution;
+    public double weight;
+    public int[][] resolution;
     public double megapixels;
     public int battery;
     public int memory;
     public int zoom;
     public int fps;
-    public int video;
-    public int audio;
-    public int storage;
-    public int wifi;
-    public int bluetooth;
-    public int usb;
-    public int sdcard;
-    public int sim;
-    public int batteryType;
-    public int batteryCapacity;
+    public String video;
+    public boolean audio;
+    public boolean wifi;
+    public boolean bluetooth;
+    public boolean usb;
+    public boolean sdcard;
+    public boolean sim;
+    public String batteryType;
+
+    @Override
+    public String toString() {
+        return "cameras{" +
+                "type='" + type + '\'' +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", weight=" + weight +
+                ", resolution=" + resolution +
+                ", megapixels=" + megapixels +
+                ", battery=" + battery +
+                ", memory=" + memory +
+                ", zoom=" + zoom +
+                ", fps=" + fps +
+                ", video='" + video + '\'' +
+                ", audio=" + audio +
+                ", wifi=" + wifi +
+                ", bluetooth=" + bluetooth +
+                ", usb=" + usb +
+                ", sdcard=" + sdcard +
+                ", sim=" + sim +
+                ", batteryType=" + batteryType +
+                '}';
+    }
 
     public String getType() {
         return type;
@@ -48,15 +72,15 @@ public class cameras extends stock{
         this.model = model;
     }
 
-    public int getPrice() {
+    public double isPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public int getQuantity() {
+    public int isQuantity() {
         return quantity;
     }
 
@@ -64,19 +88,19 @@ public class cameras extends stock{
         this.quantity = quantity;
     }
 
-    public int getWeight() {
+    public double isWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
-    public int getResolution() {
+    public int[][] getResolution() {
         return resolution;
     }
 
-    public void setResolution(int resolution) {
+    public void setResolution(int[][] resolution) {
         this.resolution = resolution;
     }
 
@@ -88,7 +112,7 @@ public class cameras extends stock{
         this.megapixels = megapixels;
     }
 
-    public int getBattery() {
+    public int isBattery() {
         return battery;
     }
 
@@ -96,7 +120,7 @@ public class cameras extends stock{
         this.battery = battery;
     }
 
-    public int getMemory() {
+    public int isMemory() {
         return memory;
     }
 
@@ -104,7 +128,7 @@ public class cameras extends stock{
         this.memory = memory;
     }
 
-    public int getZoom() {
+    public int isZoom() {
         return zoom;
     }
 
@@ -112,7 +136,7 @@ public class cameras extends stock{
         this.zoom = zoom;
     }
 
-    public int getFps() {
+    public int isFps() {
         return fps;
     }
 
@@ -120,84 +144,68 @@ public class cameras extends stock{
         this.fps = fps;
     }
 
-    public int getVideo() {
+    public String getVideo() {
         return video;
     }
 
-    public void setVideo(int video) {
+    public void setVideo(String video) {
         this.video = video;
     }
 
-    public int getAudio() {
+    public boolean getAudio() {
         return audio;
     }
 
-    public void setAudio(int audio) {
+    public void setAudio(boolean audio) {
         this.audio = audio;
     }
 
-    public int getStorage() {
-        return storage;
-    }
-
-    public void setStorage(int storage) {
-        this.storage = storage;
-    }
-
-    public int getWifi() {
+    public boolean getWifi() {
         return wifi;
     }
 
-    public void setWifi(int wifi) {
+    public void setWifi(boolean wifi) {
         this.wifi = wifi;
     }
 
-    public int getBluetooth() {
+    public boolean getBluetooth() {
         return bluetooth;
     }
 
-    public void setBluetooth(int bluetooth) {
+    public void setBluetooth(boolean bluetooth) {
         this.bluetooth = bluetooth;
     }
 
-    public int getUsb() {
+    public boolean getUsb() {
         return usb;
     }
 
-    public void setUsb(int usb) {
+    public void setUsb(boolean usb) {
         this.usb = usb;
     }
 
-    public int getSdcard() {
+    public boolean getSdcard() {
         return sdcard;
     }
 
-    public void setSdcard(int sdcard) {
+    public void setSdcard(boolean sdcard) {
         this.sdcard = sdcard;
     }
 
-    public int getSim() {
+    public boolean getSim() {
         return sim;
     }
 
-    public void setSim(int sim) {
+    public void setSim(boolean sim) {
         this.sim = sim;
     }
 
-    public int getBatteryType() {
+    public String isBatteryType() {
         return batteryType;
     }
 
-    public void setBatteryType(int batteryType) {
+    public void setBatteryType(String batteryType) {
         this.batteryType = batteryType;
-    }
-
-    public int getBatteryCapacity() {
-        return batteryCapacity;
-    }
-
-    public void setBatteryCapacity(int batteryCapacity) {
-        this.batteryCapacity = batteryCapacity;
     }
 
     public cameras() {
@@ -215,14 +223,13 @@ public class cameras extends stock{
         this.fps = fps;
         this.video = video;
         this.audio = audio;
-        this.storage = storage;
         this.wifi = wifi;
         this.bluetooth = bluetooth;
         this.usb = usb;
         this.sdcard = sdcard;
         this.sim = sim;
         this.batteryType = batteryType;
-        this.batteryCapacity = batteryCapacity;
+
     }
 
     public void setName(String getInput) {
