@@ -23,8 +23,14 @@ public class Main {
             }
         }
         // if the user is logged in, start the program
-        getChoice();
-        writeToFile();
+        do {
+            getChoice();
+            writeToFile();
+            boolean exit = Getboolean("Do you want to exit? (y/n)");
+            if (exit) {
+                break;
+            }
+        } while (true);
     }
 
     public static String GetInput(String prompt) { // method to get input from the user
@@ -42,7 +48,10 @@ public class Main {
     public static boolean Getboolean(String prompt) { // method to get a boolean from the user
         Scanner scanner = new Scanner(System.in);
         System.out.print(prompt);
-        return scanner.nextBoolean();
+        if (scanner.nextLine().equals("y")) {
+            return true;
+        }
+        return false;
     }
 
     public static int[][] GetInt2d(String prompt) { // method to get a 2d array from the user
@@ -84,27 +93,31 @@ public class Main {
 
     }
 
-    public static int getChoice() {  // method to get the user's choice
+    public static int getChoice() throws IOException {  // method to get the user's choice
         int choice = GetInt("what category would you like to enter: 1: camera 2:monitor 3:PCHardware 4:Phones|");
         if (choice == 1) {
+            try {
+                camera.setBrand(GetInput("Enter the brand of the camera: "));
+                camera.setModel(GetInput("Enter the model of the camera: "));
+                camera.setPrice(GetInt("Enter the price of the camera: "));
+                camera.setQuantity(GetInt("Enter the quantity to be added: "));
+                camera.setWeight(GetInt("Enter the weight of the camera: "));
+                camera.setMegapixels(GetDouble("Enter the megapixels of the camera: "));
+                camera.setBattery(GetInt("Enter the battery capacity of the camera: "));
+                camera.setMemory(GetInt("Enter the memory capacity of the camera: "));
+                camera.setZoom(GetInt("Enter the zoom of the camera: "));
+                camera.setFps(GetInt("Enter the fps of the camera: "));
+                camera.setVideo(GetInput("Enter the video format of the camera: "));
+                camera.setAudio(Getboolean("Enter the audio format of the camera: "));
+                camera.setWifi(Getboolean("Enter the wifi of the camera: "));
+                camera.setBluetooth(Getboolean("Enter the bluetooth of the camera: "));
+                camera.setUsb(Getboolean("Enter the usb of the camera: "));
+                camera.setSim(Getboolean("Enter the sim of the camera: "));
+                camera.setBatteryType(GetInput("Enter the os of the camera: "));
+            } catch (Exception e) {
+                System.out.println("Invalid input");
+            }
 
-            camera.setBrand(GetInput("Enter the brand of the camera: "));
-            camera.setModel(GetInput("Enter the model of the camera: "));
-            camera.setPrice(GetInt("Enter the price of the camera: "));
-            camera.setQuantity(GetInt("Enter the quantity to be added: "));
-            camera.setWeight(GetInt("Enter the weight of the camera: "));
-            camera.setMegapixels(GetDouble("Enter the megapixels of the camera: "));
-            camera.setBattery(GetInt("Enter the battery capacity of the camera: "));
-            camera.setMemory(GetInt("Enter the memory capacity of the camera: "));
-            camera.setZoom(GetInt("Enter the zoom of the camera: "));
-            camera.setFps(GetInt("Enter the fps of the camera: "));
-            camera.setVideo(GetInput("Enter the video format of the camera: "));
-            camera.setAudio(Getboolean("Enter the audio format of the camera: "));
-            camera.setWifi(Getboolean("Enter the wifi of the camera: "));
-            camera.setBluetooth(Getboolean("Enter the bluetooth of the camera: "));
-            camera.setUsb(Getboolean("Enter the usb of the camera: "));
-            camera.setSim(Getboolean("Enter the sim of the camera: "));
-            camera.setBatteryType(GetInput("Enter the os of the camera: "));
 
             System.out.println("The camera you entered is: " + camera.toString());
             return choice;
