@@ -124,7 +124,7 @@ public class Main {
 
 
         }
-        return choice;
+        return choice; // return the user's choice
     }
 
     public static void writeToFile() throws IOException { // method to write to the file
