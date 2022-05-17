@@ -1,0 +1,2 @@
+moniters{type='moniter', brand='samsung', model='odyssesy', resolutionX=6000, resolutionY=3000, refreshRate=244, brightness=255, contrast=255, color=12345, weight=1234, price=1799, quantity=3}
+

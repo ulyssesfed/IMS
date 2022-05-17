@@ -10,7 +10,11 @@ import static java.lang.System.exit;
 
 public class Main {
     static cameras camera = new cameras();
-    static File file = new File("1.txt");
+    static moniters moniters = new moniters();
+    static Phones phones = new Phones();
+    static File file = new File("1.txt"); //file for camera
+    static File MFile = new File("2.txt"); //file for moniters
+    static File PFile = new File("3.txt"); //file for phones
 
 
     public static void main(String[] args) throws IOException {
@@ -24,26 +28,26 @@ public class Main {
         }
         // if the user is logged in, start the program
         do {
-            getChoice();
-            writeToFile();
+
+            writeToFile(getChoice());
             boolean exit = Getboolean("Do you want to exit? (y/n)");
             if (exit) {
                 break;
             }
-        } while (true);
+        } while (true); // do while loop to check if the user wants to exit the program
     }
 
     public static String GetInput(String prompt) { // method to get input from the user
         Scanner scanner = new Scanner(System.in);
         System.out.print(prompt);
         return scanner.nextLine();
-    }
+    } // end of GetInput
 
     public static int GetInt(String prompt) { // method to get an integer from the user
         Scanner scanner = new Scanner(System.in);
         System.out.print(prompt);
         return scanner.nextInt();
-    }
+    } // method to get a boolean from the user
 
     public static boolean Getboolean(String prompt) { // method to get a boolean from the user
         Scanner scanner = new Scanner(System.in);
@@ -52,24 +56,24 @@ public class Main {
             return true;
         }
         return false;
-    }
+    }// method to get a boolean from the user
 
     public static int[][] GetInt2d(String prompt) { // method to get a 2d array from the user
         Scanner scanner = new Scanner(System.in);
         System.out.print(prompt);
         int[][] int2d = new int[scanner.nextInt()][scanner.nextInt()];
         return int2d;
-    }
+    }// method to get a 2d array from the user
 
     public static double GetDouble(String prompt) { // method to get a double from the user
         Scanner scanner = new Scanner(System.in);
         System.out.print(prompt);
         return scanner.nextDouble();
-    }
+    } // method to get a double from the user
 
     public static boolean login() throws IOException { // method to check if the user is logged in
         login login = new login();
-        String acc = GetInput("do you need to create an account? (y/n)");
+        String acc = GetInput("do you need to create an account? (y/n)");// if the user wants to create an account
         if (acc.equals("y")) {
             login.setUsername(GetInput("username: "));
             login.setPassword(GetInput("password: "));
@@ -82,13 +86,13 @@ public class Main {
             System.out.println("Welcome " + login.getUsername());
             return true;
         } else if (login.checkUser(login.getUsername(), login.getPassword())) {
-            System.out.println("Welcome " + login.getUsername());
+            System.out.println("Welcome " + login.getUsername()); // if the user is logged in, print the username
             return true;
         } else {
             System.out.println("Invalid username or password");
             return false;
 
-        }
+        } // if the user is not logged in, print invalid username or password
 
 
     }
@@ -123,15 +127,78 @@ public class Main {
             return choice;
 
 
+        }//end of camera
+        if (choice == 2) {
+            try {
+
+
+                moniters.setBrand(GetInput("Enter the brand of the monitor: "));
+                moniters.setModel(GetInput("Enter the model of the monitor: "));
+                moniters.setPrice(GetInt("Enter the price of the monitor: "));
+                moniters.setQuantity(GetInt("Enter the quantity to be added: "));
+                moniters.setWeight(GetInt("Enter the weight of the monitor: "));
+                moniters.setResolutionX(GetInt("Enter the resolution of the monitor: "));
+                moniters.setResolutionY(GetInt("Enter the resolution of the monitor: "));
+                moniters.setRefreshRate(GetInt("Enter the resolution of the monitor: "));
+                moniters.setBrightness(GetInt("Enter the display type of the monitor: "));
+                moniters.setContrast(GetInt("Enter the contrast of the monitor: "));
+                moniters.setColor(GetInt("Enter the aspect ratio of the monitor: "));
+            } catch (Exception e) {
+                System.out.println("Invalid input");
+            }
+
+            System.out.println("The monitor you entered is: " + moniters.toString());
+
+        }//end of monitor
+        if (choice == 3) {
+
+        }
+        if (choice == 4) {
+            try {
+                phones.setBrand(GetInput("Enter the brand of the phone: "));
+                phones.setModel(GetInput("Enter the model of the phone: "));
+                phones.setPrice(GetInt("Enter the price of the phone: "));
+                phones.setQuantity(GetInt("Enter the quantity to be added: "));
+                phones.setMegaPixels(GetInt("Enter the megapixels of the phone: "));
+                phones.setStorage(GetInt("Enter the storage of the phone: "));
+                phones.setColor(GetInput("Enter the color of the phone: "));
+                phones.setOS(GetInput("Enter the os of the phone: "));
+                phones.setCameras(GetInt("Enter the cameras of the phone: "));
+            } catch (Exception e) {
+                System.out.println("Invalid input");
+            }
+
+            System.out.println("The phone you entered is: " + phones.toString());
         }
         return choice; // return the user's choice
     }
 
-    public static void writeToFile() throws IOException { // method to write to the file
-        BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
-        writer.write(camera.toString());
-        writer.newLine();
-        writer.close();
+    public static void writeToFile(int choice) throws IOException { // method to write to the file
+        boolean check = Getboolean("Would you like to add this to the record(y/n)"); // check if the user wants to add the product to the record
+        if (choice == 1) {// if the user chose to add a camera
+            if (check) {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
+                writer.write(camera.toString());
+                writer.newLine();
+                writer.close();
+            }
+        }
+        if (choice == 2) { // if the user chose to add a monitor
+            if (check) {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(MFile, true));
+                writer.write(moniters.toString());
+                writer.newLine();
+                writer.close();
+            }
+        }
+        if (choice == 4) {// if the user chose to add a phone
+            if (check) {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(PFile, true));
+                writer.write(phones.toString());
+                writer.newLine();
+                writer.close();
+            }
+        }
 
 
     }
