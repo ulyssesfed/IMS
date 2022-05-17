@@ -1,0 +1,2 @@
+Phones{type='Phones', brand='samsung', model='galaxy s21 ultra', price=1000, quantity=34, megaPixels=108.0, storage=1000000, color='black', OS='android', cameras=5}
+Phones{type='Phones', brand='1', model='1', price=1, quantity=1, megaPixels=1.0, storage=1, color='1', OS='1', cameras=1}
