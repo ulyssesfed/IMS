@@ -16,6 +16,7 @@ public class Main {
     static File file = new File("1.txt"); //file for camera
     static File mFile = new File("2.txt"); //file for moniters
     static File pFile = new File("3.txt"); //file for phones
+    static File PcFile = new File("4.txt"); //file for PCHardware
 
 
     public static void main(String[] args) throws IOException {
@@ -150,7 +151,13 @@ public class Main {
 
             }//end of monitor
             if (choice == 3) {
-                out.println("Enter the brand of the PCHardware: ");
+                try {
+                    PCHardware.setBrand(GetInput("Enter the brand of the PCHardware: "));
+                    PCHardware.setModel(GetInput("Enter the model of the PCHardware: "));
+                } catch (Exception e) {
+                    out.println("Invalid input");
+                }
+
 
             }
             if (choice == 4) {

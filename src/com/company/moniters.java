@@ -1,7 +1,7 @@
 package com.company;
 
 public class moniters extends stock {
-    private final String type = "moniter";
+    private final String type = "monitor";
     protected String brand;
     private String model;
     private int resolutionX;
@@ -133,6 +133,7 @@ public class moniters extends stock {
                 ", quantity=" + quantity +
                 '}';
     }
+
 
     @Override
     public int hashCode() {
